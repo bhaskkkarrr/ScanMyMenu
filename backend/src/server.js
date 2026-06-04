@@ -19,21 +19,18 @@ const { tableRoutes } = require("./routes/TableRoutes");
 const { publicRoutes } = require("./routes/publicRoutes");
 const { settingsRoutes } = require("./routes/settingsRoutes");
 
-// Super Admin Routes Import
-const {
-  restaurantRoutes,
-} = require("./routes/SuperAdminRoutes/restaurantRoutes");
 const errorHandler = require("./middleware/errorMiddleware");
-
-// app.use(
-//   cors({
-//     origin: "tasty-tokens.vercel.app",
-//     credentials: true,
-//   })
-// );
+console.log(process.env.BASE_URL);
+console.log(process.env.BASE_LOCAL_URL);
+const allowedOrigins = [process.env.BASE_URL, process.env.BASE_LOCAL_URL];
 
 // App Routes
-app.use(cors());
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  }),
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/public", publicRoutes);
@@ -42,9 +39,6 @@ app.use("/api/category", categoryRoutes);
 app.use("/api/menu", menuItemRoutes);
 app.use("/api/table", tableRoutes);
 app.use("/api/settings", settingsRoutes);
-
-// Super Admin Routes
-app.use("/api/superadmin/restaurants", restaurantRoutes);
 app.use("/api/contact", contactMessageRoutes);
 app.use(errorHandler);
 

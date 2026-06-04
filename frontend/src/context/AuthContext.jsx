@@ -97,7 +97,6 @@ export const AuthProvider = ({ children }) => {
         setResCurrency(res.restaurant.currency || "₹");
 
         if (restaurant.role === "admin") navigate("/admin");
-        else if (restaurant.role === "superadmin") navigate("/superadmin");
         return { success: true };
       } else {
         return { success: false, message: res.message || "Login failed" };

@@ -9,7 +9,7 @@ const restaurantSchema = new mongoose.Schema({
   },
   ownerName: { type: String },
   address: { type: String },
-  currency: { type: String, default: "INR" },
+  currency: { type: String, default: "₹" },
   logoUrl: { type: String },
   email: { type: String, required: true, unique: true },
   phoneNumber: { type: String, required: true, unique: true },

@@ -3,6 +3,7 @@ const errorResponse = require("../utils/errorResponse");
 
 // ✅ GET Restaurant + User Settings
 exports.getSettings = async (req, res) => {
+  console.log(req.user.restaurantId)
   try {
     const restaurantId = req.user.restaurantId;
     // Fetch restaurant and user in parallel

@@ -1,5 +1,4 @@
 import "./index.css";
-// import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 
@@ -20,21 +19,13 @@ import ProtectedRoute from "./guard/ProtectedRoute";
 import PublicLayout from "./pages/public/PublicLayout";
 import CustomerMenu from "./pages/public/CustomerMenu";
 import CustomerProviders from "./pages/public/CustomerProviders";
-
-// SUPER-ADMIN
-import SuperAdminLayout from "./pages/super-admin/SuperAdminLayout";
-import SuperDashboard from "./pages/super-admin/SuperDashboard";
-import SuperQrCode from "./pages/super-admin/SuperQrCode";
-import SuperCustomer from "./pages/super-admin/SuperCustomer";
-import SuperSettings from "./pages/super-admin/SuperSettings";
-import SuperAdminProvider from "./pages/super-admin/SuperAdminProvider";
 import LandingPage from "./pages/LandingPage";
 
 function App() {
   return (
     <AuthProvider>
       <Routes>
-        <Route path="/" element={<LandingPage/>}/>
+        <Route path="/" element={<LandingPage />} />
         {/* Public / Auth routes */}
         <Route path="/login" element={<LoginPage />} />
         {/* Admin */}
@@ -65,24 +56,6 @@ function App() {
           }
         >
           <Route index element={<CustomerMenu />} />
-        </Route>
-
-        {/* Super Admin */}
-        <Route
-          path="/superadmin"
-          element={
-            <ProtectedRoute allowedRoles={["superadmin"]}>
-              <SuperAdminProvider>
-                <SuperAdminLayout />
-              </SuperAdminProvider>
-            </ProtectedRoute>
-          }
-        >
-          <Route index element={<SuperDashboard />} />
-          <Route path="dashboard" element={<SuperDashboard />} />
-          <Route path="qr-codes" element={<SuperQrCode />} />
-          <Route path="restaurants" element={<SuperCustomer />} />
-          <Route path="settings" element={<SuperSettings />} />
         </Route>
 
         <Route path="*" element={<Page404 />} />
