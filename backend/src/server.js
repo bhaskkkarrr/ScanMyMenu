@@ -20,8 +20,7 @@ const { publicRoutes } = require("./routes/publicRoutes");
 const { settingsRoutes } = require("./routes/settingsRoutes");
 
 const errorHandler = require("./middleware/errorMiddleware");
-console.log(process.env.BASE_URL);
-console.log(process.env.BASE_LOCAL_URL);
+
 const allowedOrigins = [process.env.BASE_URL, process.env.BASE_LOCAL_URL];
 
 // App Routes

@@ -68,7 +68,8 @@ export default function CustomerMenu() {
   };
 
   return (
-    <div className="min-h-screen mb-4 bg-gradient-to-br from-slate-50 via-white to-emerald-50/20">
+    <div className="min-h-screen m mb-4 bg-gradient-to-br from-slate-50 via-white to-emerald-50/20">
+      
       {isLoading && (
         <div className="flex justify-center items-center min-h-screen">
           <FoodLoaderDemo />
@@ -143,7 +144,7 @@ export default function CustomerMenu() {
       )}
 
       {!isLoading && !error && data?.success !== false && (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
+        <div className="max-w-xl min-w-xs shadow mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
           {/* Header Section */}
           <div className="mb-2 sm:mb-12">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
@@ -198,6 +199,7 @@ export default function CustomerMenu() {
               ))}
             </div>
           </div>
+              
           {/* Menu Items Grid */}
           {filteredMenu.length > 0 ? (
             <div className="space-y-5 sm:space-y-14">
@@ -212,7 +214,7 @@ export default function CustomerMenu() {
                   </div>
 
                   {data.restaurant.hasPictures ? (
-                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-5 lg:gap-6">
+                    <div className="grid grid-cols-2 gap-4">
                       {category.items.map((item) => {
                         return (
                           <div
@@ -385,6 +387,7 @@ export default function CustomerMenu() {
           onClose={() => setSelectedItem(null)}
         />
       )}
+      
     </div>
   );
 }
